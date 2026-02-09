@@ -159,15 +159,25 @@ export class SevenSegmentDisplay {
   }
 
   public activate_blink_dp(): void {
+    const BLINK_INTERVAL_MS = 100;
+
     if (!this.dp.isRunning) {
       this.dp.blink();
-      this.LED_BUILTIN.blink();
+      this.LED_BUILTIN.blink(BLINK_INTERVAL_MS);
     }
+
+    [this.a, this.b, this.c, this.d, this.e, this.f, this.g].map(
+      (led) => led.isOn && !led.isRunning && led.blink(BLINK_INTERVAL_MS),
+    );
   }
 
   public deactivate_blink_dp(): void {
     this.dp.stop().off();
     this.LED_BUILTIN.stop().off();
+
+    [this.a, this.b, this.c, this.d, this.e, this.f, this.g].map(
+      (led) => led.isRunning && led.stop().off(),
+    );
   }
 
   public display_P(): void {
