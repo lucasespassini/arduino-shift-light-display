@@ -2,7 +2,6 @@
   "name": "arduino-shift-light-display",
   "version": "1.0.0",
   "description": "Arduino-based shift light display for racing simulators",
-  "type": "module",
   "private": true,
   "author": "",
   "license": "MIT",
@@ -15,9 +14,12 @@
   ],
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "start": "tsx src/index.ts",
-    "build": "tsc --noEmit",
-    "type-check": "tsc --noEmit"
+    "build": "tsc && npm run copy-files",
+    "copy-files": "cp SMS_UDP_Definitions.hpp dist/ && cp .env.example dist/",
+    "start": "node dist/index.js",
+    "start:dev": "tsx src/index.ts",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf dist"
   },
   "dependencies": {
     "binary-parser": "^2.3.0",

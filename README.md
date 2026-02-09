@@ -60,18 +60,38 @@ Decimal Point → Pin 5
 
 ## 🚀 Usage
 
-### Development Mode
+### Development Mode (Recommended)
 
 ```bash
 npm run dev
 ```
 
-This mode automatically restarts when you make code changes.
+Automatically restarts when you make code changes. Uses `tsx` for direct TypeScript execution.
 
 ### Production Mode
 
+**Option 1: Build and run (better performance)**
+
 ```bash
-npm start
+npm run build  # Compile TypeScript to JavaScript
+npm start      # Run with Node.js
+```
+
+This compiles TypeScript to optimized JavaScript in the `dist/` folder and runs it with Node.js, offering better performance.
+
+**Option 2: Direct execution (simpler)**
+
+```bash
+npm run start:dev
+```
+
+Runs TypeScript directly without build step. Simpler but slightly slower startup.
+
+### Utility Commands
+
+```bash
+npm run type-check  # Check types without building
+npm run clean       # Remove dist folder
 ```
 
 ## 🎮 Game Compatibility
